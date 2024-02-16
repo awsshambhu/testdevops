@@ -1,15 +1,24 @@
-sample
-Test
-try1
-try2
-try3
-nexttry
-try again
-again
-good
-Again start
-next
-again
-again
-once more
-16-02-2024
+cd /var/lib/jenkins/workspace/Project3
+ls -al
+docker ps -a
+#docker stack rm Shambhu_App
+#docker stop $(docker ps -a | grep hello | awk '{print $1}')
+#docker rm $(docker ps -a | grep hello | awk '{print $1}')
+docker stop $(docker ps -a | grep shambhunath/practice:shambhuapp02 | awk '{print $1}')
+docker rm $(docker ps -a | grep shambhunath/practice:shambhuapp02 | awk '{print $1}')
+docker rmi shambhuapp02
+docker rmi shambhunath/practice:shambhuapp02
+docker build -t shambhuapp02 .
+docker images
+docker login -u snparamanik@gmail.com -p zZ~tw3aMf914{r
+docker tag shambhuapp02 shambhunath/practice:shambhuapp02
+docker images
+docker push shambhunath/practice:shambhuapp02
+docker logout
+docker images
+docker run -d -p 8085:80 shambhunath/practice:shambhuapp02
+docker ps -a
+#docker swarm init
+docker stack deploy -c docker-compose.yml Shambhu_App
+docker ps -a
+docker service ps Shambhu_App_web
